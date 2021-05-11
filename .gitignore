@@ -1,0 +1,5 @@
+# Project exclude paths
+/Exception/target/
+/Repository/target/
+/RestController/target/
+/Service/target/
