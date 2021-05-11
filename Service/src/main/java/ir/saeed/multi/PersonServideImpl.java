@@ -26,7 +26,7 @@ public class PersonServideImpl implements PersonService {
     public List<Person> getAll() {
         List<Person> ret = repository.findAll();
 
-        if (ret != null && !ret.isEmpty())
+        if (!ret.isEmpty())
             return ret;
         else
             throw new MyNotFoundException("Personals not found.");
@@ -46,6 +46,21 @@ public class PersonServideImpl implements PersonService {
             origEntity.setFirstName(entity.getFirstName());
         if (entity.getLastName() != null)
             origEntity.setLastName(entity.getLastName());
+    }
+
+    @Override
+    public Person getByNationalCode(String code) {
+        if (code == null)
+            throw new MyNotNullParameter("National Code can not be Null.");
+        code = code.trim();
+        if (code.length() != 10)
+            throw new MyLenghException("National Code must has 10 digit.");
+        Optional<Person> res = repository.findByNationalCode(code);
+
+        if (res.isPresent())
+            return res.get();
+        else
+            throw new MyNotFoundException("Person with National Code " + code + " not found.");
     }
 
 

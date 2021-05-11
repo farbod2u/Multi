@@ -14,7 +14,7 @@ public class PersonController {
     private PersonService service;
 
     @GetMapping("{id}")
-    public Person get(@PathVariable(name = "id") Long id) {
+    public Person get(@PathVariable Long id) {
         return service.get(id);
     }
 
@@ -23,13 +23,18 @@ public class PersonController {
         return service.getAll();
     }
 
+    @GetMapping("/nat/{code}")
+    public Person getByNationalCode(@PathVariable String code) {
+        return service.getByNationalCode(code);
+    }
+
     @PostMapping
     public Person insert(@RequestBody Person entity) {
         return service.insert(entity);
     }
 
     @PutMapping
-    public void update(@RequestBody Person entity){
+    public void update(@RequestBody Person entity) {
         service.update(entity);
     }
 

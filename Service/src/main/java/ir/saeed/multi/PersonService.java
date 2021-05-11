@@ -7,4 +7,5 @@ public interface PersonService {
     List<Person> getAll();
     Person insert(Person entity);
     void update(Person entity);
+    Person getByNationalCode(String code);
 }

@@ -23,4 +23,7 @@ public class Person {
     @Column(name = "last_name", nullable = false, length = 500)
     private String lastName;
 
+    @Column(name = "nationalcode", nullable = false, length = 10, unique = true)
+    private String nationalCode;
+
 }
